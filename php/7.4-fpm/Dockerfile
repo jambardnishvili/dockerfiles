@@ -15,7 +15,7 @@ RUN pecl channel-update pecl.php.net \
   && docker-php-ext-enable xdebug \
   && sed -i -e 's/^zend_extension/\;zend_extension/g' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
-COPY --from=composer /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2.0 /usr/bin/composer /usr/bin/composer
 COPY conf/xdebug.ini /usr/local/etc/php/conf.d/
 
 RUN groupadd -g 1000 app \
